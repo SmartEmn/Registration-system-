@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Welcome</title>
+
+    <style>
+        /* ===== ORIGINAL DESIGN PRESERVED ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #071952, #088395, #35A29F);
+            color: #fff;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h2 { font-size: 24px; }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav button:hover {
+            background: white;
+            color: #071952;
+        }
+
+        nav button:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        main { width: 100%; padding: 40px 15px; }
+
+        .page {
+            display: none;
+            max-width: 480px;
+            margin: 20px auto;
+            animation: appear 0.3s ease;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome { text-align: center; padding: 65px 15px; }
+        .welcome h1 { font-size: 42px; margin-bottom: 20px; }
+        .welcome p { font-size: 17px; line-height: 1.7; margin-bottom: 28px; }
+
+        .card {
+            background: white;
+            color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h1 { text-align: center; color: #071952; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; }
+        .form-group { margin-bottom: 17px; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+            background: white;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #35A29F;
+            border-color: transparent;
+        }
+
+        .primary-btn {
+            width: 100%;
+            background: #088395;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+            transition: background 0.2s;
+        }
+
+        .primary-btn:hover { background: #071952; }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .text-btn {
+            background: none;
+            border: none;
+            color: #088395;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 7px;
+            display: none;
+            overflow-wrap: anywhere;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.error { display: block; background: #ffe5e5; color: #a00000; }
+        .message.success { display: block; background: #e0f8e9; color: #126331; }
+        .info-card { line-height: 1.8; }
+        .info-card h2 { color: #071952; margin-bottom: 12px; }
+        .info-card p { margin-bottom: 12px; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 13px;
+        }
+
+        @media (max-width: 500px) {
+            header { justify-content: center; text-align: center; }
+            header h2 { width: 100%; }
+            nav { justify-content: center; }
+            .welcome h1 { font-size: 34px; }
+            .welcome p { font-size: 16px; }
+            .card { padding: 22px; }
+            main { padding: 25px 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>🎓 Student Portal</h2>
+        <nav aria-label="Main navigation">
+            <button type="button" onclick="showPage('home')">Home</button>
+            <button type="button" onclick="showPage('register')">Register</button>
+            <button type="button" onclick="showPage('login')">Login</button>
+            <button type="button" onclick="showPage('help')">Help</button>
+            <button type="button" onclick="showPage('about')">About</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME PAGE -->
+        <section id="home" class="page active welcome">
+            <h1>Welcome! 👋</h1>
+            <p>
+                Welcome to our Student Registration Portal.<br>
+                Register your student information or log in
+                to access your account.
+            </p>
+            <button class="primary-btn" style="max-width: 200px;" onclick="showPage('register')">
+                Register Now
+            </button>
+            <br><br>
+            <button class="primary-btn" style="max-width: 200px;" onclick="showPage('login')">
+                Student Login
+            </button>
+        </section>
+
+        <!-- REGISTRATION PAGE -->
+        <section id="register" class="page">
+            <div class="card">
+                <h1>Register</h1>
+                <p class="subtitle">Create your student account</p>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" autocomplete="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass">Grade</label>
+                        <select id="studentClass" required>
+                            <option value="">Select your grade</option>
+                            <option value="9">Grade 9</option>
+                            <option value="10">Grade 10</option>
+                            <option value="11">Grade 11</option>
+                            <option value="12">Grade 12</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentSection">Section</label>
+                        <select id="studentSection" required>
+                            <option value="">Select your section</option>
+                            <option value="A">Section A</option>
+                            <option value="B">Section B</option>
+                            <option value="C">Section C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerFAN">FAN</label>
+                        <input type="text" id="registerFAN" placeholder="Enter your FAN" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createPassword">Create Password</label>
+                        <input type="password" id="createPassword" placeholder="Create a password" autocomplete="new-password" minlength="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Enter your password again" autocomplete="new-password" minlength="8" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Create Account</button>
+                    <div id="registerMessage" class="message" role="status" aria-live="polite"></div>
+                </form>
+                <p class="switch-text">
+                    Already registered?
+                    <button type="button" class="text-btn" onclick="showPage('login')">Login here</button>
+                </p>
+            </div>
+        </section>
+
+        <!-- LOGIN PAGE -->
+        <section id="login" class="page">
+            <div class="card">
+                <h1>Student Login</h1>
+                <p class="subtitle">Enter your account details</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginFAN">Enter FAN</label>
+                        <input type="text" id="loginFAN" placeholder="Enter your FAN" autocomplete="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Enter Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Login</button>
+                    <div id="loginMessage" class="message" role="status" aria-live="polite"></div>
+                </form>
+                <p class="switch-text">
+                    Don't have an account?
+                    <button type="button" class="text-btn" onclick="showPage('register')">Register here</button>
+                </p>
+            </div>
+        </section>
+
+        <!-- HELP PAGE -->
+        <section id="help" class="page">
+            <div class="card info-card">
+                <h2>Help Center</h2>
+                <p><strong>How do I register?</strong></p>
+                <p>Open Register, enter your full name, grade, section, FAN and password, then submit the form.</p>
+                <p><strong>What is FAN?</strong></p>
+                <p>FAN means Fayda Alias Number. Handle this personal identifier carefully and only use an authorized verification method.</p>
+                <p><strong>How do I log in?</strong></p>
+                <p>Enter your FAN and the password associated with your account.</p>
+                <p>If you need account assistance, contact your school administrator.</p>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page">
+            <div class="card info-card">
+                <h2>About Us</h2>
+                <p>The Student Portal is designed to make student registration and account access easier.</p>
+                <p>Students can enter their information, select their grade and section, and use their FAN when the secure registration system is ready.</p>
+                <p><strong>Version:</strong> 1.1</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Student Portal | Student Registration System
+    </footer>
+
+    <script>
+        // ===== 1. PAGE NAVIGATION =====
+        function showPage(pageId) {
+            const selectedPage = document.getElementById(pageId);
+            if (!selectedPage) return;
+
+            document.querySelectorAll('.page').forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            selectedPage.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== 2. DISPLAY FORM MESSAGES =====
+        function displayMessage(element, text, type) {
+            element.textContent = text;
+            element.className = 'message ' + type;
+        }
+
+        // ===== 3. REGISTRATION FORM VALIDATION =====
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const studentClass = document.getElementById('studentClass').value;
+            const studentSection = document.getElementById('studentSection').value;
+            const fan = document.getElementById('registerFAN').value.trim();
+            const password = document.getElementById('createPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const message = document.getElementById('registerMessage');
+
+            message.className = 'message';
+            message.textContent = '';
+
+            if (!fullName || !studentClass || !studentSection || !fan || !password || !confirmPassword) {
+                displayMessage(message, 'Please complete all required fields.', 'error');
+                return;
+            }
+
+            if (!['9', '10', '11', '12'].includes(studentClass)) {
+                displayMessage(message, 'Please select Grade 9, 10, 11, or 12.', 'error');
+                return;
+            }
+
+            if (!['A', 'B', 'C'].includes(studentSection)) {
+                displayMessage(message, 'Please select Section A, B, or C.', 'error');
+                return;
+            }
+
+            if (password.length < 8) {
+                displayMessage(message, 'Your password must contain at least 8 characters.', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                displayMessage(message, 'The passwords do not match. Please try again.', 'error');
+                return;
+            }
+
+            /*
+             * FRONTEND DEMONSTRATION ONLY.
+             * This does not create an account, save the FAN,
+             * or send student information to a server.
+             * Real registration will use Django and PostgreSQL.
+             */
+            displayMessage(
+                message,
+                'Form validation successful! Your information has not been saved. Secure account registration will be connected later.',
+                'success'
+            );
+        });
+
+        // ===== 4. LOGIN FORM DEMONSTRATION =====
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fan = document.getElementById('loginFAN').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const message = document.getElementById('loginMessage');
+
+            message.className = 'message';
+
+            if (!fan || !password) {
+                displayMessage(message, 'Please enter your FAN and password.', 'error');
+                return;
+            }
+
+            displayMessage(
+                message,
+                'Login is not connected yet. Django will securely verify your credentials when the backend is implemented.',
+                'error'
+            );
+        });
+    </script>
+</body>
+</html>
